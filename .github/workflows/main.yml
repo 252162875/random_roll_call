@@ -23,3 +23,11 @@ jobs:
 
     - name: Build Windows executable
       run: flutter build windows
+
+    - name: Upload EXE
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release
+        path: ${{github.workspace}}/app/build/outputs/windows/release/*.exe
+        if-no-files-found: warn
+        retention-days: 30
