@@ -27,7 +27,8 @@ jobs:
     - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
+      
         name: app-release
-        path: ${{github.workspace}}/app/build/outputs/windows/release/*.exe
+        path: ${{github.workspace}}/build/windows/x64/runner/Release/random_roll_call.exe
         if-no-files-found: warn
         retention-days: 30
