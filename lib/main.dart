@@ -9,10 +9,6 @@ import 'route/router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([     // 强制竖屏
-       DeviceOrientation.landscapeLeft,
-       DeviceOrientation.landscapeRight
-  ]);
   debugPaintSizeEnabled = false;
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // transparent status bar
