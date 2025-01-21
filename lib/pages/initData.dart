@@ -104,6 +104,17 @@ class _InitDataPageState extends State<InitDataPage> {
                         }
                       }
                       if (hasEmpty) {
+                        final snackBar = SnackBar(
+                          content: Text('数据格式错误，正确格式: A,B,C,D'),
+                          duration: Duration(seconds: 5),
+                          action: SnackBarAction(
+                            label: '知道了',
+                            onPressed: () {
+                              //Some code to undo the change.
+                            },
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         Fluttertoast.showToast(msg: '数据格式错误，正确格式: A,B,C,D');
                       } else {
                         _profileModel.jsonData = list;
