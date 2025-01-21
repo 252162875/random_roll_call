@@ -104,6 +104,7 @@ class _InitDataPageState extends State<InitDataPage> {
                       }
                       if (hasEmpty) {
                         final snackBar = SnackBar(
+                          backgroundColor: Colors.redAccent,
                           content: Text('数据格式错误，正确格式: A,B,C,D'),
                           duration: Duration(seconds: 5),
                           action: SnackBarAction(
