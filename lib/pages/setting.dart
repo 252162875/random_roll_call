@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -137,7 +136,18 @@ class _SettingPageState extends State<SettingPage> {
                       showAlertDialog((text) {
                         _profileModel.appName = text;
                         Global.saveProfile();
-                        Fluttertoast.showToast(msg: "设置成功");
+                        final snackBar = SnackBar(
+                          backgroundColor: Colors.redAccent,
+                          content: Text('设置成功'),
+                          duration: Duration(seconds: 5),
+                          action: SnackBarAction(
+                            label: '知道了',
+                            onPressed: () {
+                              //Some code to undo the change.
+                            },
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       });
                       break;
                     case 2:
@@ -196,7 +206,18 @@ class _SettingPageState extends State<SettingPage> {
                       context.goNamed(manageData);
                       break;
                     default:
-                      Fluttertoast.showToast(msg: "=====Empty=====");
+                      final snackBar = SnackBar(
+                        backgroundColor: Colors.redAccent,
+                        content: Text('=====Empty====='),
+                        duration: Duration(seconds: 5),
+                        action: SnackBarAction(
+                          label: '知道了',
+                          onPressed: () {
+                            //Some code to undo the change.
+                          },
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
                 textData: items[index] ?? "Empty",
