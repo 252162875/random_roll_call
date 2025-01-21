@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import '../global.dart';
 import '../profile_model.dart';
@@ -57,7 +56,7 @@ class _InitDataPageState extends State<InitDataPage> {
                     focusNode: focusNode,
                     onTapOutside: (e) => {focusNode.unfocus()},
                     decoration: InputDecoration(
-                      labelText: "请输入或粘贴数据（以英文逗号“,”分隔）",
+                      labelText: "请输入或粘贴数据（以中文逗号“，”分隔）",
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 0.0),
@@ -115,16 +114,24 @@ class _InitDataPageState extends State<InitDataPage> {
                           ),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        Fluttertoast.showToast(msg: '数据格式错误，正确格式: A,B,C,D');
                       } else {
                         _profileModel.jsonData = list;
                         Global.saveProfile();
                         context.goNamed(home);
                       }
                     } catch (e, s) {
-                      Fluttertoast.showToast(
-                          msg: '数据格式错误，正确格式: A,B,C,D',
-                          toastLength: Toast.LENGTH_LONG);
+                     final snackBar = SnackBar(
+                          backgroundColor: Colors.redAccent,
+                          content: Text('数据格式错误，正确格式: A，B，C，D'),
+                          duration: Duration(seconds: 5),
+                          action: SnackBarAction(
+                            label: '知道了',
+                            onPressed: () {
+                              //Some code to undo the change.
+                            },
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
                   child: Text(
