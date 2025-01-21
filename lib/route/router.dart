@@ -5,6 +5,7 @@ import 'package:random_roll_call/pages/setting.dart';
 import 'package:route_life/route_life.dart';
 import '../error.dart';
 import '../pages/home.dart';
+import '../pages/home_new.dart';
 import '../pages/splash.dart';
 import 'my_nav_observer.dart';
 
@@ -24,7 +25,7 @@ final router = GoRouter(
             GoRoute(
                 path: 'home',
                 name: home,
-                builder: (_, GoRouterState state) => const HomePage(),
+                builder: (_, GoRouterState state) => const HomeNewPage(),
                 routes: [
                   GoRoute(
                       path: 'setting',
