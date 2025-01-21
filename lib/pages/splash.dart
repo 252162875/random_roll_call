@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_roll_call/pages/home.dart';
-
+import 'home_new.dart';
 import '../global.dart';
 import '../profile_model.dart';
 import 'initData.dart';
@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: (_profileModel.jsonData?.isNotEmpty ?? false)
-          ? const HomePage()
+          ? const HomeNewPage()
           : const InitDataPage(),
     );
   }
