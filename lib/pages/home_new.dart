@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../android_back_desktop.dart';
@@ -55,7 +54,18 @@ class _HomeNewPageState extends State<HomeNewPage> {
       showSlide = false;
     });
     if (_profileModel.jsonData?.isEmpty ?? true) {
-      Fluttertoast.showToast(msg: "数据被清空了吗？去添加数据再开始吧");
+      final snackBar = SnackBar(
+        backgroundColor: Colors.redAccent,
+        content: Text('数据被清空了吗？去添加数据再开始吧'),
+        duration: Duration(seconds: 5),
+        action: SnackBarAction(
+          label: '知道了',
+          onPressed: () {
+            //Some code to undo the change.
+          },
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return;
     }
     _timer?.cancel();
