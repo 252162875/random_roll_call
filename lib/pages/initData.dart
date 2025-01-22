@@ -26,7 +26,7 @@ class _InitDataPageState extends State<InitDataPage> {
     List l = _profileModel.jsonData ?? [];
     for (int i = 0; i < l.length; i++) {
       t += l[i];
-      if (i < (l.length-1)) {
+      if (i < (l.length - 1)) {
         t += "，";
       }
     }
@@ -105,8 +105,8 @@ class _InitDataPageState extends State<InitDataPage> {
                       if (hasEmpty) {
                         final snackBar = SnackBar(
                           backgroundColor: Colors.redAccent,
-                          content: Text('数据格式错误，正确格式: A,B,C,D'),
-                          duration: Duration(seconds: 5),
+                          content: const Text('数据格式错误，正确格式: A，B，C，D'),
+                          duration: const Duration(seconds: 5),
                           action: SnackBarAction(
                             label: '知道了',
                             onPressed: () {
@@ -121,18 +121,18 @@ class _InitDataPageState extends State<InitDataPage> {
                         context.goNamed(home);
                       }
                     } catch (e, s) {
-                     final snackBar = SnackBar(
-                          backgroundColor: Colors.redAccent,
-                          content: Text('数据格式错误，正确格式: A，B，C，D'),
-                          duration: Duration(seconds: 5),
-                          action: SnackBarAction(
-                            label: '知道了',
-                            onPressed: () {
-                              //Some code to undo the change.
-                            },
-                          ),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      final snackBar = SnackBar(
+                        backgroundColor: Colors.redAccent,
+                        content: const Text('数据格式错误，正确格式: A，B，C，D'),
+                        duration: const Duration(seconds: 5),
+                        action: SnackBarAction(
+                          label: '知道了',
+                          onPressed: () {
+                            //Some code to undo the change.
+                          },
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
                   child: Text(
