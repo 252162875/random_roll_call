@@ -138,8 +138,8 @@ class _SettingPageState extends State<SettingPage> {
                         Global.saveProfile();
                         final snackBar = SnackBar(
                           backgroundColor: Colors.redAccent,
-                          content: Text('设置成功'),
-                          duration: Duration(seconds: 5),
+                          content: const Text('设置成功'),
+                          duration: const Duration(seconds: 5),
                           action: SnackBarAction(
                             label: '知道了',
                             onPressed: () {
@@ -208,8 +208,8 @@ class _SettingPageState extends State<SettingPage> {
                     default:
                       final snackBar = SnackBar(
                         backgroundColor: Colors.redAccent,
-                        content: Text('=====Empty====='),
-                        duration: Duration(seconds: 5),
+                        content: const Text('=====Empty====='),
+                        duration: const Duration(seconds: 5),
                         action: SnackBarAction(
                           label: '知道了',
                           onPressed: () {
