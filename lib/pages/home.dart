@@ -38,10 +38,10 @@ class _HomePageState extends State<HomePage> {
 
   void startLoading() {
     if (_profileModel.jsonData?.isEmpty ?? true) {
-       final snackBar = SnackBar(
+      final snackBar = SnackBar(
         backgroundColor: Colors.redAccent,
-        content: Text('数据被清空了吗？去添加数据再开始吧'),
-        duration: Duration(seconds: 5),
+        content: const Text('数据被清空了吗？去添加数据再开始吧'),
+        duration: const Duration(seconds: 5),
         action: SnackBarAction(
           label: '知道了',
           onPressed: () {
