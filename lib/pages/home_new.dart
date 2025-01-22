@@ -30,16 +30,23 @@ class _HomeNewPageState extends State<HomeNewPage> {
   final random = Random();
   String keyName = "点击按钮开始";
   bool showSlide = true;
+  late Color numColor;
 
   @override
   void initState() {
     super.initState();
-
     count = sliderValue1.toInt();
     durationMilliseconds = sliderValue2.toInt();
   }
 
+  @override
+  didChangeDependencies() {
+    super.didChangeDependencies();
+    numColor = Theme.of(context).colorScheme.onPrimaryContainer;
+  }
+
   String getRandomNum() {
+    _numColor();
     var keyNameTemp =
         _profileModel.jsonData![random.nextInt(_profileModel.jsonData!.length)];
     if (keyName == keyNameTemp) {
@@ -56,8 +63,8 @@ class _HomeNewPageState extends State<HomeNewPage> {
     if (_profileModel.jsonData?.isEmpty ?? true) {
       final snackBar = SnackBar(
         backgroundColor: Colors.redAccent,
-        content: Text('数据被清空了吗？去添加数据再开始吧'),
-        duration: Duration(seconds: 5),
+        content: const Text('数据被清空了吗？去添加数据再开始吧'),
+        duration: const Duration(seconds: 5),
         action: SnackBarAction(
           label: '知道了',
           onPressed: () {
@@ -78,6 +85,7 @@ class _HomeNewPageState extends State<HomeNewPage> {
         } else {
           if (_profileModel.selectedItem?.isNotEmpty ?? false) {
             if (_profileModel.jsonData!.contains(_profileModel.selectedItem)) {
+              _numColor();
               keyName = _profileModel.selectedItem!;
             } else {
               keyName = getRandomNum();
@@ -94,12 +102,14 @@ class _HomeNewPageState extends State<HomeNewPage> {
   }
 
   // 数字文本随机颜色
-  Color get _numColor {
+  void _numColor() {
     Random random = Random();
     int red = random.nextInt(256);
     int green = random.nextInt(256);
     int blue = random.nextInt(256);
-    return Color.fromARGB(255, red, green, blue);
+    setState(() {
+      numColor = Color.fromARGB(255, red, green, blue);
+    });
   }
 
   void _addNumber() {
@@ -201,8 +211,7 @@ class _HomeNewPageState extends State<HomeNewPage> {
                           maxLines: 1,
                           textAlign: TextAlign.center,
                           key: ValueKey<String>(keyName),
-                          style:
-                              TextStyle(fontSize: textSize, color: _numColor),
+                          style: TextStyle(fontSize: textSize, color: numColor),
                         ),
                       ),
                     ),
